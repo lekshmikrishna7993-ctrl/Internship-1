@@ -1,0 +1,114 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+In [2]:
+dataset = pd.read_csv('titanic.csv')
+X = dataset.iloc[:, :-1].values # DATA
+y = dataset.iloc[:, -1].values #LABELS
+
+
+In [3]:
+dataset
+
+
+Out[3]:
+PassengerIdSurvivedPclassNameSexAgeSibSpParchTicketFareCabinEmbarked0103Braund, Mr. Owen Harrismale22.010A/5 211717.2500NaNS1211Cumings, Mrs. John Bradley (Florence Briggs Th...female38.010PC 1759971.2833C85C2313Heikkinen, Miss. Lainafemale26.000STON/O2. 31012827.9250NaNS3411Futrelle, Mrs. Jacques Heath (Lily May Peel)female35.01011380353.1000C123S4503Allen, Mr. William Henrymale35.0003734508.0500NaNS.......................................88688702Montvila, Rev. Juozasmale27.00021153613.0000NaNS88788811Graham, Miss. Margaret Edithfemale19.00011205330.0000B42S88888903Johnston, Miss. Catherine Helen "Carrie"femaleNaN12W./C. 660723.4500NaNS88989011Behr, Mr. Karl Howellmale26.00011136930.0000C148C89089103Dooley, Mr. Patrickmale32.0003703767.7500NaNQ
+891 rows × 12 columns
+
+In [5]:
+X
+
+
+Out[5]:
+array([[1, 0, 3, ..., 'A/5 21171', 7.25, nan],
+       [2, 1, 1, ..., 'PC 17599', 71.2833, 'C85'],
+       [3, 1, 3, ..., 'STON/O2. 3101282', 7.925, nan],
+       ...,
+       [889, 0, 3, ..., 'W./C. 6607', 23.45, nan],
+       [890, 1, 1, ..., '111369', 30.0, 'C148'],
+       [891, 0, 3, ..., '370376', 7.75, nan]],
+      shape=(891, 11), dtype=object)
+
+In [6]:
+y
+
+
+Out[6]:
+<StringArray>
+['S', 'C', 'S', 'S', 'S', 'Q', 'S', 'S', 'S', 'C',
+ ...
+ 'S', 'S', 'S', 'S', 'Q', 'S', 'S', 'S', 'C', 'Q']
+Length: 891, dtype: str
+
+In [8]:
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+print(X_train)
+
+
+
+[[141 0 3 ... '2678' 15.2458 nan]
+ [440 0 2 ... 'C.A. 18723' 10.5 nan]
+ [818 0 2 ... 'S.C./PARIS 2079' 37.0042 nan]
+ ...
+ [630 0 3 ... '334912' 7.7333 nan]
+ [560 1 3 ... '345572' 17.4 nan]
+ [685 0 2 ... '29750' 39.0 nan]]
+
+
+In [9]:
+print(y_train)
+
+
+
+<StringArray>
+['C', 'S', 'C', 'C', 'S', 'S', 'S', 'Q', 'S', 'S',
+ ...
+ 'S', 'C', 'Q', 'S', 'S', 'C', 'S', 'Q', 'S', 'S']
+Length: 712, dtype: str
+
+
+In [10]:
+print(X_test)
+
+
+
+[[496 0 3 ... '2627' 14.4583 nan]
+ [649 0 3 ... 'S.O./P.P. 751' 7.55 nan]
+ [279 0 3 ... '382652' 29.125 nan]
+ ...
+ [216 1 1 ... '35273' 113.275 'D36']
+ [834 0 3 ... '347468' 7.8542 nan]
+ [373 0 3 ... '323951' 8.05 nan]]
+
+
+In [11]:
+print(y_test)
+
+
+
+<StringArray>
+['C', 'S', 'Q', 'C', 'C', 'S', 'S', 'S', 'C', 'C',
+ ...
+ 'S', 'S', 'C', 'S', 'S', 'C', 'S', 'C', 'S', 'S']
+Length: 179, dtype: str
+
+
+In [13]:
+print(X_test)
+
+
+
+[[496 0 3 ... '2627' 14.4583 nan]
+ [649 0 3 ... 'S.O./P.P. 751' 7.55 nan]
+ [279 0 3 ... '382652' 29.125 nan]
+ ...
+ [216 1 1 ... '35273' 113.275 'D36']
+ [834 0 3 ... '347468' 7.8542 nan]
+ [373 0 3 ... '323951' 8.05 nan]]
+
+
+In [ ]:
+ 
